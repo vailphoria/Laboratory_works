@@ -8,8 +8,8 @@
 ### Отчёт по лабораторной работе №3<br/> по дисциплине "Программирование"
 <br/>
 
-студента 1 курса группы ПИ-б-о-191(1)  
-Корзина Василия Алексеевича
+студента 1 курса группы ПИ-б-о-191(2)  
+Забелиной Валерии Павловны
 направления подготовки 09.03.04 "Программная инженерия"  
 <br/>
 
@@ -35,17 +35,17 @@
 **1\.** Для работы с изображениями в формате bmp скачаем библиотеку с github.\
 **2\.** В скаченном репозитории находим папку CPP, в ней расположены файлы которые нужно подключить к своему проекту.\
 **3\.** Файл libbmp.cpp скопируем в папку проекта и добавим к проекту.\
-![Рис.1 Добавление элемента](https://raw.githubusercontent.com/GachiGucciGhoul/Laboratory_works/master/lab3/Images_for_lab1/1.png)
+![Рис.1 Добавление элемента](https://raw.githubusercontent.com/vailphoria/Laboratory_works/master/lab3/Images_for_lab1/1.png)
 *рис.1: Добавление элемента*\
 \
 **4\.** В папке с проектом создаем папку include и скопируем туда libbmp.h\
 **5\.** Добавим папку include к нашему проекту.\
-![Рис.2 Добавление и подключение папки include](https://raw.githubusercontent.com/GachiGucciGhoul/Laboratory_works/master/lab3/Images_for_lab1/2.PNG)
+![Рис.2 Добавление и подключение папки include](https://raw.githubusercontent.com/vailphoria/Laboratory_works/master/lab3/Images_for_lab1/2.PNG)
 *рис.2: Добавление и подключение папки include*\
 \
 **6\.** В соответствии с вариантом качаем картинку и берем ключ для нее.\
 Ключ для 5го варианта: 11r 11b 11g 01r 01b 01g 10r 10b\
-![Рис.3 Картинка пятого варианта](https://raw.githubusercontent.com/GachiGucciGhoul/Laboratory_works/master/lab3/Images_for_lab1/pic5.bmp)\
+![Рис.3 Картинка пятого варианта](https://raw.githubusercontent.com/vailphoria/Laboratory_works/master/lab3/Images_for_lab1/pic5.bmp)\
 *рис.3: Картинка пятого варианта*\
 \
 **7\.** Для решение поставленной задачи пишем код:
@@ -106,8 +106,8 @@ int main()
 }
 ```
 **8\.** Получаем ответ.\
-![Рис.3 Результат работы программы](https://raw.githubusercontent.com/GachiGucciGhoul/Laboratory_works/master/lab3/Images_for_lab1/3.PNG)\
+![Рис.3 Результат работы программы](https://raw.githubusercontent.com/vailphoria/Laboratory_works/master/lab3/Images_for_lab1/3.PNG)\
 *рис.3: Результат работы программы*\
 \
-**Вывод:** в ходе выполнения данной лабораторной работы приобрел навыки подключения сторонних библиотек и научился декодировать текст из изображения.
+**Вывод:** в ходе выполнения данной лабораторной работы приобрела навыки подключения сторонних библиотек и научилась декодировать текст из изображения.
 
