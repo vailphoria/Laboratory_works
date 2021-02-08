@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+#include <string>
+#include <cmath>
+#include <vector>
+
+
+vector<string> combinate(string);
+vector<string> combinate(int, string);
+
+void from1ToN(int);
+
+int main()
+{
+	int n;
+	string dict;
+	vector<string> array;
+	cin >> n;
+	//from1ToN(n);
+	
+	cin >> dict;
+
+	if (dict.length() == n) array = combinate(dict);
+	else array = combinate(n, dict);
+
+	for (string i : array) cout << i << " ";
+
+}
+
+vector<string> combinate(string dict)
+{
+	vector<string> array;
+	vector<string> miniArray;
+	string letter;
+
+
+	if (dict.length() > 2) {
+		letter = dict[0];
+		dict = dict.substr(1);
+		miniArray = combinate(dict);
+
+		for (int i = 0; i < miniArray.size(); i++) {
+			string thisDict = letter + miniArray[i];
+			array.push_back(thisDict);
+			for (int j = 1; j < thisDict.size(); j++) {
+				string word = thisDict[j] + thisDict.substr(1, j - 1) + thisDict[0] + thisDict.substr(j + 1);
+				array.push_back(word);
+			}
+		}
+	}
+	else {
+		array.push_back(dict);
+
+		char i = dict[0];
+		dict[0] = dict[1];
+		dict[1] = i;
+		array.push_back(dict);
+	}
+	return array;
+}
+
+vector<string> combinate(int n, string dict)
+{
+	vector<string> array;
+
+
+	return array;
+}
+
+void from1ToN(int n) {
+	if (n > 1) {
+		from1ToN(n - 1);
+	}
+	cout << n<<'\n';
+}
