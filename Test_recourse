@@ -1,30 +1,30 @@
 #include <iostream>
-using namespace std;
 #include <string>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
+using namespace std;
 
 vector<string> combinate(string);
 vector<string> combinate(int, string);
-
-void from1ToN(int);
+vector<string> makeOtherArray(int, string);
+vector<string> removeAnalogStrings(vector<string>, string);
 
 int main()
 {
 	int n;
 	string dict;
 	vector<string> array;
-	cin >> n;
-	//from1ToN(n);
 	
+	cin >> n;
 	cin >> dict;
 
 	if (dict.length() == n) array = combinate(dict);
 	else array = combinate(n, dict);
 
 	for (string i : array) cout << i << " ";
-
+	cout << '\n';
 }
 
 vector<string> combinate(string dict)
@@ -59,17 +59,76 @@ vector<string> combinate(string dict)
 	return array;
 }
 
-vector<string> combinate(int n, string dict)
-{
+vector<string> combinate(int n, string dict) {
 	vector<string> array;
+	vector<string> bigArray = removeAnalogStrings(makeOtherArray(n, dict),dict);
 
+	for (int i = 0; i < bigArray.size(); i++) {
+		vector <string> thisIteration = combinate(bigArray[i]);
+		for (int j = 0; j < thisIteration.size(); j++) {
+			array.push_back(thisIteration[j]);
+		}
+	}
+
+	array = removeAnalogStrings(array,"");
 
 	return array;
 }
 
-void from1ToN(int n) {
-	if (n > 1) {
-		from1ToN(n - 1);
+
+vector<string> makeOtherArray(int n, string dict)
+{
+	//последовательность в n свободных букв, всех комбинаций (повторы есть)
+	vector<string> array;
+	vector<string> miniArray;
+
+	int plusLatters = n - dict.length();
+
+	if (plusLatters > 2) {
+		miniArray = makeOtherArray(n-1, dict);
+		for (int i = 0; i < dict.length(); i++) {
+			for (int j = 0; j < miniArray.size(); j++) {
+				string word = dict[i] + miniArray[j];
+				sort(word.begin(),word.end());
+				array.push_back(word);
+			}
+		}
+	}else if(plusLatters == 2){
+		for (int i = 0; i < dict.length(); i++) {
+			for (int j = 0; j < dict.length(); j++) {
+				string smallDict = "";
+				smallDict.push_back(dict[i]);
+				smallDict.push_back(dict[j]);
+				array.push_back(smallDict);
+			}
+		}
 	}
-	cout << n<<'\n';
+	else {
+		for (int i = 0; i < dict.length(); i++) {
+			string smallDict = "";
+			smallDict.push_back(dict[i]);
+			array.push_back(smallDict);
+		}
+	}
+
+	return array;
+}
+
+vector<string> removeAnalogStrings(vector<string> array, string dict){
+	vector<string> bigArray;
+
+	//убрала повторы + добавление словаря
+	for (int i = 0; i < array.size(); i++) {
+		if (array[i] == "") continue;
+		bigArray.push_back(array[i] + dict);
+
+		for (int j = 0; j < array.size(); j++) {
+			if (i != j && array[i] == array[j]) {
+				array[j] = "";
+			}
+		}
+	}
+
+	return bigArray;
+
 }
